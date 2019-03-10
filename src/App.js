@@ -19,6 +19,12 @@ class App extends Component {
     this.setState({userInput: event.target.value})
   }
 
+  deleteTextHandler = (index) =>{
+    const texts = [...this.state.userInput.split(' ')];
+    texts.splice(index, 1);
+    this.setState({userInput: texts.join(' ')})
+  }
+
   render() {
     let length = 0;
 
@@ -26,8 +32,11 @@ class App extends Component {
 
     texts = (
         <div>
-          {this.state.userInput.split(' ').map(text => {
-            return <CharComp text={text}/>
+          {this.state.userInput.split(' ').map((text, index) => {
+            return <CharComp
+                text={text}
+                key = {index}
+                click={()=>this.deleteTextHandler(index)}/>
           })}
 
         </div>

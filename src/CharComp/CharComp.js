@@ -10,7 +10,7 @@ const charcomp = (props) => {
         border: '1px solid black'
     }
     return (
-        <div style={style}>
+        <div style={style} onClick={props.click}>
             <p>{props.text}</p>
         </div>
     );
